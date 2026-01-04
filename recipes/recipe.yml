@@ -28,6 +28,7 @@ modules:
         - atim/starship
         - che/zed
         - kylegospo/system76-scheduler
+        - bazzite-org/bazzite-multilib
     install:
       packages:
         - cosmic-desktop
@@ -36,7 +37,6 @@ modules:
         - gamescope
         - mangohud
         - system76-scheduler
-        - libva.i686 # To ensure that Steam is able to run in the RPM but there is still a chance that the 64 and 32 bit versions are not version matched
 
         # Devtools
         - ptyxis
@@ -73,6 +73,11 @@ modules:
     install:
       - steam # specialized akmods module to avoid 32bit codec issues
       - steam-devices
+      # 32 bit packages for steam
+      - libva.i686
+      - intel-media-driver.i686
+      - mesa-vulkan-drivers.i686
+      
   - type: akmods
     install:
       - kvmfr
