@@ -19,6 +19,18 @@ modules:
 
   - type: dnf
     repos:
+      files:
+        - https://negativo17.org/repos/fedora-steam.repo
+    install:
+      packages:
+        - steam
+        - kernel-modules-extra
+        - ffmpeg
+      install-weak-deps: false
+      allow-erasing: true
+
+  - type: dnf
+    repos:
       cleanup: false # necessary for RPM stage not to fail
       nonfree: rpmfusion # enable RPM Fusion repositories (required for Steam, etc.)
       files:
@@ -28,7 +40,6 @@ modules:
         - atim/starship
         - che/zed
         - kylegospo/system76-scheduler
-        - kylegospo/bazzite-multilib
     install:
       packages:
         # Everything gaming
@@ -66,23 +77,6 @@ modules:
     group-install:
       packages:
         - virtualization
-
-  - type: rpm-ostree
-    install:
-      - steam # specialized akmods module to avoid 32bit codec issues
-      - steam-devices
-      # 32 bit packages for steam
-
-    replace:
-      - from-repo: rpmfusion-free
-        packages:
-          - libavcodec-free
-          - libavformat-free
-          - libavutil-free
-          - libswscale-free
-          - libswresample-free
-          - libpostproc-free
-          - ffmpeg-free
 
   - type: akmods
     install:
