@@ -36,6 +36,9 @@ modules:
         - mangohud
         - system76-scheduler
 
+        # Desktop environment
+        - cosmic-desktop
+
         # Devtools
         - ptyxis
         - tailscale
@@ -49,10 +52,6 @@ modules:
         - libva-utils
 
         # multimedia
-        - vlc
-        - mpv
-        - ffmpeg
-        - libavcodec-freeworld
 
         # Virtualization support for Windows guests
         - edk2-ovmf
@@ -67,11 +66,6 @@ modules:
     group-install:
       packages:
         - virtualization
-  - type: dnf
-    group-install:
-      with-optional: true
-      packages:
-        - cosmic-desktop-environment
 
   - type: rpm-ostree
     install:
@@ -81,6 +75,16 @@ modules:
       - libva.i686
       - intel-media-driver.i686
       - mesa-vulkan-drivers.i686
+    replace:
+      - from-repo: rpmfusion-free
+        packages:
+          - libavcodec-free
+          - libavformat-free
+          - libavutil-free
+          - libswscale-free
+          - libswresample-free
+          - libpostproc-free
+          - ffmpeg-free
 
   - type: akmods
     install:
