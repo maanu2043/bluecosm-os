@@ -19,7 +19,7 @@ modules:
 
   - type: dnf
     repos:
-      cleanup: true # clean up added repos after module is done
+      cleanup: false # necessary for RPM stage not to fail
       nonfree: rpmfusion # enable RPM Fusion repositories (required for Steam, etc.)
       files:
         - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
@@ -84,7 +84,7 @@ modules:
       enabled:
         - libvirtd.socket
         - virtnetworkd.socket
-        - system76-scheduler.service
+        - com.system76.Scheduler.service
         - tailscaled.service
 
   - type: default-flatpaks
