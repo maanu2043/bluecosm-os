@@ -26,14 +26,14 @@ modules:
       copr:
         - ryanabx/cosmic-epoch # Cosmic Desktop packages
         - atim/starship
-        - che/zed # Zed editor
+        - che/zed
+        - jkies/system76-scheduler
+        - lush/looking-glass-kvmfr
     install:
       packages:
         - cosmic-desktop
 
-        # Everything Steam gaming
-        - steam
-        - steam-devices
+        # Everything gaming
         - gamescope
         - mangohud
         - system76-scheduler
@@ -62,7 +62,7 @@ modules:
         - kvmfr
 
         # LLM requirements
-        - level-zero
+        - level-zero-devel
         - intel-compute-runtime
 
         # Zed editor (RPM to avoid flatpak limitations)
@@ -70,6 +70,10 @@ modules:
     group-install:
       packages:
         - virtualization
+  - type: rpm-ostree
+    install:
+      - steam # specialized akmods module to avoid 32bit codec issues
+      - steam-devices
   - type: brew
     nofile-limits: true
   - type: systemd
