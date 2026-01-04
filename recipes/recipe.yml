@@ -50,7 +50,8 @@ modules:
 
         # Desktop environment
         - cosmic-desktop
-        - nerd-fonts-jetbrains-mono
+        - jetbrains-mono-fonts-all
+        - nerd-fonts
 
         # Devtools
         - ptyxis
