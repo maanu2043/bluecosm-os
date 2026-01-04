@@ -49,6 +49,7 @@ modules:
 
         # Desktop environment
         - cosmic-desktop
+        - jetbrains-mono-fonts-all
 
         # Devtools
         - ptyxis
