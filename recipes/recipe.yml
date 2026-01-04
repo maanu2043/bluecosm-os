@@ -62,8 +62,6 @@ modules:
         - intel-gpu-tools
         - libva-utils
         - libva-intel-media-driver
-        # multimedia
-        - ffmpeg
         # Virtualization support for Windows guests
         - edk2-ovmf
         - swtpm
@@ -77,10 +75,6 @@ modules:
     group-install:
       packages:
         - virtualization
-
-  - type: akmods
-    install:
-      - kvmfr
 
   - type: brew
     nofile-limits: true
