@@ -3,11 +3,11 @@
 # image will be published to ghcr.io/<user>/<name>
 name: bluecosm-os
 # description will be included in the image's metadata
-description: This is my personal OS image.
+description: This is my personal OS image with the Cosmic Desktop.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-main
-image-version: 42 # latest is also supported if you want new updates ASAP
+base-image: ghcr.io/ublue-os/base-main
+image-version: latest
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -19,18 +19,66 @@ modules:
 
   - type: dnf
     repos:
+      cleanup: true # clean up added repos after module is done
+      nonfree: rpmfusion # enable RPM Fusion repositories (required for Steam, etc.)
+      add:
+        - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
       copr:
+        - ryanabx/cosmic-epoch # Cosmic Desktop packages
         - atim/starship
+        - che/zed # Zed editor
     install:
       packages:
+        - cosmic-desktop
+
+        # Everything Steam gaming
+        - steam
+        - steam-devices
+        - gamescope
+        - mangohud
+        - system76-scheduler
+
+        # Devtools
+        - ptyxis
+        - tailscale
+
+        # CLI tools
         - micro
         - starship
-    remove:
+
+        # Intel graphics support
+        - intel-gpu-tools
+        - libva-utils
+
+        # multimedia
+        - vlc
+        - mpv
+        - ffmpeg
+        - libavcodec-freeworld
+
+        # Virtualization support for Windows guests
+        - edk2-ovmf
+        - swtpm
+        - kvmfr
+
+        # LLM requirements
+        - level-zero
+        - intel-compute-runtime
+
+        # Zed editor (RPM to avoid flatpak limitations)
+        - zed
+    group-install:
       packages:
-        # example: removing firefox (in favor of the flatpak)
-        # "firefox" is the main package, "firefox-langpacks" is a dependency
-        - firefox
-        - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+        - virtualization
+  - type: brew
+    nofile-limits: true
+  - type: systemd
+    system:
+      enabled:
+        - libvirtd.socket
+        - virtnetworkd.socket
+        - system76-scheduler.service
+        - tailscaled.service
 
   - type: default-flatpaks
     configurations:
@@ -38,8 +86,7 @@ modules:
         scope: system
         # If no repo information is specified, Flathub will be used by default
         install: # system flatpaks we want all users to have and not remove
-          - org.mozilla.firefox
-          - org.gnome.Loupe
+          - com.vivaldi.Vivaldi
       - scope: user # Also add Flathub user repo, but no user packages
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
