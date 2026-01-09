@@ -19,6 +19,7 @@ modules:
 
   - type: dnf # steam installation
     repos:
+      cleanup: true
       files:
         - https://negativo17.org/repos/fedora-steam.repo
     install:
@@ -31,7 +32,7 @@ modules:
 
   - type: dnf # general packages
     repos:
-      cleanup: false # necessary for RPM stage not to fail
+      cleanup: false
       nonfree: rpmfusion # enable RPM Fusion repositories (required for Steam, etc.)
       files:
         - https://pkgs.tailscale.com/stable/fedora/tailscale.repo

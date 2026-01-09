@@ -19,6 +19,7 @@ modules:
 
   - type: dnf # steam installation
     repos:
+      cleanup: true
       files:
         - https://negativo17.org/repos/fedora-steam.repo
     install:
@@ -35,7 +36,7 @@ modules:
 
   - type: dnf # general packages including NVIDIA drivers
     repos:
-      cleanup: true # necessary for RPM stage not to fail
+      cleanup: true
       nonfree: rpmfusion # enable RPM Fusion repositories (required for Steam, etc.)
       files:
         - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
@@ -86,6 +87,13 @@ modules:
       packages:
         - firefox
         - firefox-langpacks
+        - linux-firmware-intel
+        - linux-firmware-broadcom
+        - linux-firmware-mediatek
+        - linux-firmware-mellanox
+        - linux-firmware-nxp
+        - linux-firmware-qlogic
+        - linux-firmware-ti
 
   - type: kargs
     kargs:
@@ -108,7 +116,7 @@ modules:
 
         - com.system76.Scheduler.service
         - tailscaled.service
-        
+
         - nvidia-persistenced.service # Keep NVIDIA driver loaded
         - nvidia-suspend.service # Suspend NVIDIA driver
         - nvidia-resume.service # Resume NVIDIA driver
