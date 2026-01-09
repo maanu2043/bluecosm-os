@@ -35,7 +35,7 @@ modules:
 
   - type: dnf # general packages including NVIDIA drivers
     repos:
-      cleanup: false # necessary for RPM stage not to fail
+      cleanup: true # necessary for RPM stage not to fail
       nonfree: rpmfusion # enable RPM Fusion repositories (required for Steam, etc.)
       files:
         - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
@@ -77,10 +77,6 @@ modules:
         - swtpm
         - virt-manager
 
-        # LLM requirements
-        - intel-level-zero
-        - intel-compute-runtime
-
         # Zed editor (RPM to avoid flatpak limitations)
         - zed
     group-install:
@@ -95,6 +91,7 @@ modules:
     kargs:
       - amd_pstate=active # Enable AMD P-state control
       - nvidia-drm.modeset=1 # Enable NVIDIA DRM kernel mode setting
+      - nvidia.NVreg_PreserveVideoMemoryAllocations=1 # Preserve video memory allocations
 
   - type: brew
     nofile-limits: true
@@ -107,10 +104,15 @@ modules:
         - libvirtd.socket
         - virtqemud.socket
         - virtnetworkd.socket
+        - virtproxyd.socket
 
         - com.system76.Scheduler.service
         - tailscaled.service
+        
         - nvidia-persistenced.service # Keep NVIDIA driver loaded
+        - nvidia-suspend.service # Suspend NVIDIA driver
+        - nvidia-resume.service # Resume NVIDIA driver
+        - nvidia-hibernate.service # Hibernate NVIDIA driver
 
   - type: default-flatpaks
     configurations:
