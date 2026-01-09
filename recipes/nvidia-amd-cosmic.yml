@@ -96,7 +96,7 @@ modules:
         - firefox-langpacks
 
   - type: kargs
-    args:
+    kargs:
       - amd_pstate=active # Enable AMD P-state control
 
   - type: brew
