@@ -76,7 +76,7 @@ modules:
         - micro
         - starship
 
-        # Virtualization support for Windows guests
+        # Virtualization support for Windows guest
         - edk2-ovmf
         - swtpm
         - virt-manager
