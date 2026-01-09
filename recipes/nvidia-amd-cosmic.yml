@@ -41,8 +41,10 @@ modules:
       files:
         - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
         - https://repo.vivaldi.com/stable/vivaldi-fedora.repo
+        - https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
       keys:
         - https://repo.vivaldi.com/stable/linux_signing_key.pub
+        - https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
       copr:
         - ryanabx/cosmic-epoch # Cosmic Desktop packages
         - atim/starship
@@ -59,6 +61,7 @@ modules:
         # Desktop environment
         - cosmic-desktop
         - vivaldi-stable
+        - brave-browser
 
         # AMD ryzen support
         - amd-ucode-firmware
