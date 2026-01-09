@@ -29,7 +29,7 @@ modules:
       install-weak-deps: false
       allow-erasing: true
 
-  - type: dnf # general packages
+  - type: dnf # general packages including NVIDIA drivers
     repos:
       cleanup: false # necessary for RPM stage not to fail
       nonfree: rpmfusion # enable RPM Fusion repositories (required for Steam, etc.)
@@ -56,10 +56,18 @@ modules:
         - cosmic-desktop
         - vivaldi-stable
 
+        # NVIDIA drivers from negativo17 repo
+        - nvidia-driver
+        - nvidia-driver-libs
+        - nvidia-driver-cuda-libs
+        - nvidia-settings
+        - nvidia-persistenced
+
         # AMD ryzen support
         - amd-ucode-firmware
         - lm_sensors
         - kernel-tools
+
         # Devtools
         - ptyxis
         - tailscale
@@ -87,17 +95,14 @@ modules:
         - firefox
         - firefox-langpacks
 
-  - type: akmods
-    install:
-      - nvidia
-    nvidia-driver: nvidia-open
-
   - type: kargs
     kargs:
       - amd_pstate=active # Enable AMD P-state control
+      - nvidia-drm.modeset=1 # Enable NVIDIA DRM kernel mode setting
 
   - type: brew
     nofile-limits: true
+    brew-analytics: false
 
   - type: systemd
     system:
@@ -109,10 +114,7 @@ modules:
 
         - com.system76.Scheduler.service
         - tailscaled.service
-
-  - type: brew
-    nofile-limits: true
-    brew-analytics: false
+        - nvidia-persistenced.service # Keep NVIDIA driver loaded
 
   - type: default-flatpaks
     configurations:
