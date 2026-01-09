@@ -56,10 +56,6 @@ modules:
         - cosmic-desktop
         - vivaldi-stable
 
-        # Nvidia support
-        - nvidia-vaapi-driver
-        - libva-vdpau-driver
-
         # AMD ryzen support
         - amd-ucode-firmware
         - lm_sensors
