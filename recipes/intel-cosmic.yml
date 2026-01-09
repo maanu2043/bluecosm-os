@@ -95,6 +95,7 @@ modules:
         - libvirtd.socket
         - virtqemud.socket
         - virtnetworkd.socket
+        - virtproxyd.socket
 
         - com.system76.Scheduler.service
         - tailscaled.service
