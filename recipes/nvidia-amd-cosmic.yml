@@ -69,7 +69,7 @@ modules:
         - kernel-tools
 
         # Devtools
-        - ptyxis
+        - ptyxis 
         - tailscale
 
         # CLI tools
@@ -117,13 +117,15 @@ modules:
         - virtnetworkd.socket
         - virtproxyd.socket
 
-        - com.system76.Scheduler.service
+        - com.system76.Scheduler.service 
         - tailscaled.service
 
         - nvidia-persistenced.service # Keep NVIDIA driver loaded
         - nvidia-suspend.service # Suspend NVIDIA driver
         - nvidia-resume.service # Resume NVIDIA driver
         - nvidia-hibernate.service # Hibernate NVIDIA driver
+      disabled:
+        - NetworkManager-wait-online.service # Shorten boottime, maybe relevant for autostart VPN/VM
 
   - type: default-flatpaks
     configurations:

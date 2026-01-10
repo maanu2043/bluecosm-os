@@ -110,6 +110,8 @@ modules:
 
         - com.system76.Scheduler.service
         - tailscaled.service
+      disabled:
+        - NetworkManager-wait-online.service
 
   - type: brew
     nofile-limits: true
